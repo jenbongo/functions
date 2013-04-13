@@ -1,0 +1,20 @@
+function leastSquaresFit(values_x, values_y) {
+    var count = values_x.length;
+    var values_xy = _.range(0,values_x.length,1).map(function(x) 
+                    {return values_x[x]*values_y[x]})
+    var values_xx = _.range(0,values_x.length,1).map(function(x) 
+                    {return values_x[x]*values_x[x]})
+    
+  
+    /* Calculate sums of squares */
+    var sum_x = values_x.reduce(function(a,b) {return a + b;});
+    var sum_y = values_y.reduce(function(a,b) {return a + b;});
+    var sum_xx = values_xx.reduce(function(a,b) {return a + b;});
+    var sum_xy = values_xy.reduce(function(a,b) {return a + b;});
+  
+    /* Calculate a and b for the formula:
+     * y = a + b*x */
+    var b = (count*sum_xy - sum_x*sum_y) / (count*sum_xx - sum_x*sum_x);
+    var a = (sum_y/count) - (b*sum_x)/count;
+    return [a, b];
+}
