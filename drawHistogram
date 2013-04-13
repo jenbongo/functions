@@ -8,7 +8,7 @@ var x = d3.scale.linear()
     .domain([0, values.sort(function(a,b){return a - b})[values.length - 1]])
     .range([0, width]);
   
-var data = d3.layout.histogram() .bins(x.ticks(20))(values);
+var data = d3.layout.histogram() .bins(x.ticks(30))(values);
 
 var y = d3.scale.linear()
     .domain([0, d3.max(data, function(d) {return d.y; })])
