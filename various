@@ -1,0 +1,30 @@
+// This function generates a single random number from a standard normal distribution
+
+Math.nrand = function() {
+  
+  var x1, x2, rad;
+ 
+	do {
+		x1 = 2 * this.random() - 1;
+		x2 = 2 * this.random() - 1;
+		rad = x1 * x1 + x2 * x2;
+	} while(rad >= 1 || rad == 0);
+ 
+	var c = this.sqrt(-2 * Math.log(rad) / rad);
+ 
+	return x1 * c;
+};
+
+// This function creates a sample of random numbers, of specified size, from a normal distribution with specified mean and SD
+
+createSample = function(mean, sd, size) {
+  
+   return _.range(1,size,1).map(function() {return  sd*Math.nrand() + mean;});
+};
+
+// This function simulates a sampling distribution of sample means, specifying the population mean and SD, the sample size, plus the number of samples the distribution is based on         
+
+simulateSamplingDistribution = function(mean,sd,size,nsim) {
+  
+  return _.range(1,nsim,1).map(function() {return meanValue(createSample(mean,sd,size));}); 
+};
