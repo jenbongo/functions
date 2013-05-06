@@ -17,14 +17,14 @@ Math.nrand = function() {
 
 // This function creates a sample of random numbers, of specified size, from a normal distribution with specified mean and SD
 
-jn.createSample = function(mean, sd, size) {
+jnCreateSample = function(mean, sd, size) {
   
    return _.range(1,size,1).map(function() {return  sd*Math.nrand() + mean;});
 };
 
 // This function simulates a sampling distribution of sample means, specifying the population mean and SD, the sample size, plus the number of samples the distribution is based on         
 
-jn.simulateSamplingDistribution = function(mean,sd,size,nsim) {
+jnSimulateSamplingDistribution = function(mean,sd,size,nsim) {
   
   return _.range(1,nsim,1).map(function() {return meanValue(createSample(mean,sd,size));}); 
 };
@@ -32,14 +32,14 @@ jn.simulateSamplingDistribution = function(mean,sd,size,nsim) {
 
 // This function calculates the mean
 
-jn.mean = function(values) {
+jnMean = function(values) {
     var sum = values.reduce(function(a,b) {return a + b;});
     return sum/values.length;                        
                              };
 
 // This function calculates the standard deviation
 
-jn.sd = function(values) {
+jnSd = function(values) {
   var resid = _.range(1,values.length,1).map(function (x) {return    Math.pow(values[x] - meanValue(values),2)});
   var sumResid = resid.reduce(function(a,b) {return a + b;});
   return Math.sqrt(sumResid/(values.length-1));
@@ -47,7 +47,7 @@ jn.sd = function(values) {
 
 // This function calculates the weighted mean
 
-jn.wtmean = function(values, weights) {
+jnWtMean = function(values, weights) {
     var wtvalues = _.range(0,values.length,1).map(function(x) {return values[x]*weights[x];});
     var sum = wtvalues.reduce(function(a,b) {return a + b;});
     var length = weights.reduce(function(a,b) {return a + b;});
