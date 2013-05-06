@@ -1,4 +1,3 @@
-
 // This function calculates the mean
 
 jnMean = function(values) {
@@ -9,7 +8,7 @@ jnMean = function(values) {
 // This function calculates the standard deviation
 
 jnSd = function(values) {
-  var resid = _.range(1,values.length,1).map(function (x) {return Math.pow(values[x] - jnMean(values),2)});
+  var resid = _.range(0,values.length,1).map(function (x) {return Math.pow(values[x] - jnMean(values),2)});
   var sumResid = resid.reduce(function(a,b) {return a + b;});
   return Math.sqrt(sumResid/(values.length-1));
                            };
