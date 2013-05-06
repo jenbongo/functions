@@ -41,7 +41,7 @@ jnCreateSample = function(mean, sd, size) {
 
 jnSimulateSamplingDistribution = function(mean,sd,size,nsim) {
   
-  return _.range(1,nsim,1).map(function() {return jnMean(jncreateSample(mean,sd,size));}); 
+  return _.range(1,nsim,1).map(function() {return jnMean(jnCreateSample(mean,sd,size));}); 
 };
 
 
