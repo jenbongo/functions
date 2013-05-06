@@ -32,15 +32,24 @@ simulateSamplingDistribution = function(mean,sd,size,nsim) {
 
 // This function calculates the mean
 
-meanValue = function(values) {
+mean = function(values) {
     var sum = values.reduce(function(a,b) {return a + b;});
     return sum/values.length;                        
                              };
 
 // This function calculates the standard deviation
 
-sdValue = function(values) {
+sd = function(values) {
   var resid = _.range(1,values.length,1).map(function (x) {return    Math.pow(values[x] - meanValue(values),2)});
   var sumResid = resid.reduce(function(a,b) {return a + b;});
   return Math.sqrt(sumResid/(values.length-1));
                            };
+
+// This function calculates the weighted mean
+
+weightedMean = function(values, weights) {
+    var wtvalues = _.range(0,values.length,1).map(function(x) {return values[x]*weights[x];});
+    var sum = wtvalues.reduce(function(a,b) {return a + b;});
+    var length = weights.reduce(function(a,b) {return a + b;});
+    return sum/length;                        
+                             };
