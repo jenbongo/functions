@@ -32,16 +32,16 @@ Math.nrand = function() {
 
 // This function creates a sample of random numbers, of specified size, from a normal distribution with specified mean and SD
 
-createSample = function(mean, sd, size) {
+createSample = function(meanval, sdval, size) {
   
-   return _.range(1,size,1).map(function() {return  sd*Math.nrand() + mean;});
+   return _.range(1,size,1).map(function() {return  sdval*Math.nrand() + meanval;});
 };
 
 // This function simulates a sampling distribution of sample means, specifying the population mean and SD, the sample size, plus the number of samples the distribution is based on         
 
-simulateSamplingDistribution = function(mean,sd,size,nsim) {
+simulateSamplingDistribution = function(meanval,sdval,size,nsim) {
   
-  return _.range(1,nsim,1).map(function() {return mean(createSample(mean,sd,size));}); 
+  return _.range(1,nsim,1).map(function() {return mean(createSample(meanval,sdval,size));}); 
 };
 
 
