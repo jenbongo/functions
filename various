@@ -1,3 +1,20 @@
+// This gives the density of the binomial distribution
+
+dbinom = function(x,n,p) {
+  return Math.exp((x*Math.log(p)) - (x*Math.log(1 - p)) + (n*Math.log(1-p)) + (Math.log(factorial(n)/factorial(n-x))))
+}
+
+
+// This function calculates the factorial of an integer
+
+factorial = function(n) 
+{ 
+var x=1; 
+while(n>1) 
+x*=(n--); 
+return x; 
+}
+
 // This function calculates the mean
 
 mean = function(values) {
