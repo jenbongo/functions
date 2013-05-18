@@ -1,14 +1,16 @@
 // This gives the density of the binomial distribution
 
 dbinom = function(x,n,p) {
-  return Math.exp((x*Math.log(p)) - (x*Math.log(1 - p)) + (n*Math.log(1-p)) + (Math.log(factorial(n)/factorial(n-x))))
+  return Math.exp(
+      (x*Math.log(p)) - (x*Math.log(1 - p)) + (n*Math.log(1-p)) + (Math.log(factorial(n)/factorial(n-x)))
+      )
 }
 
 // This gives the cumulative density (distribution function) of the binomial distribution
 
 pbinom = function(x,n,p) {
 
-var densities =  _.range(0,x,1).map(function(z) {return jstat.dbinom_raw(z,n,p,1);});
+var densities =  _.range(0,x,1).map(function(z) {return dbinom(z,n,p,1);});
 
 return densities.reduce(function(a,b) {return a + b;});
 }
