@@ -8,9 +8,9 @@ dbinom = function(x,n,p) {
 
 pbinom = function(x,n,p) {
 
-var x =  _.range(0,x,1).map(function(x) {return jstat.dbinom_raw(x,n,p,1);});
+var densities =  _.range(0,x,1).map(function(z) {return jstat.dbinom_raw(z,n,p,1);});
 
-return x.reduce(function(a,b) {return a + b;});
+return densities.reduce(function(a,b) {return a + b;});
 }
 
 // This function calculates the factorial of an integer
