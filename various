@@ -2,7 +2,7 @@
 
 dbinom = function(x,n,p) {
   return Math.exp(
-      (x*Math.log(p)) - (x*Math.log(1 - p)) + (n*Math.log(1-p)) + (Math.log(factorial(n)/factorial(n-x)))
+      (x*Math.log(p)) - (x*Math.log(1 - p)) + (n*Math.log(1-p)) + (Math.log(factorial(n)/(factorial(x)*factorial(n-x))))
       )
 }
 
@@ -10,7 +10,7 @@ dbinom = function(x,n,p) {
 
 pbinom = function(x,n,p) {
 
-var densities =  _.range(0,x,1).map(function(z) {return dbinom(z,n,p,1);});
+var densities =  _.range(0,x,1).map(function(z) {return dbinom(z,n,p);});
 
 return densities.reduce(function(a,b) {return a + b;});
 }
