@@ -10,7 +10,7 @@ dbinom = function(x,n,p) {
 
 pbinom = function(x,n,p) {
 
-var densities =  _.range(0,x,1).map(function(z) {return dbinom(z,n,p);});
+var densities =  _.range(0,x + 1,1).map(function(z) {return dbinom(z,n,p);});
 
 return densities.reduce(function(a,b) {return a + b;});
 }
